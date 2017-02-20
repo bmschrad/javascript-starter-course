@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JavaScript</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="data:,">
+  <style>
+    body { padding: 30px; }
+  </style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<button type="button" class="btn btn-danger" onclick="saySomething('This is the first button')">
+			My Button
+		</button>
+		<button type="button" class="btn btn-danger" onclick="saySomething('This is the second button', true)">
+			Second Button
+		</button>
+	</div>
+  <!-- ???????? start javascript ???????? -->
+  <script>
+const saySomething = (message = 'goodbye', whisper = false) => {
+
+		if(whisper) {
+			console.log(`%c${message}`, 'font-size:5px');
+		} else {
+			console.log(message);
+		}
+	}
+	
+	saySomething('Hello', true);
+	saySomething('my name is brandon');
+
+	const squared = function(a){
+		return a * a;
+	}
+	
+	const otherSquared = (a) => {
+		return a * a;
+	}
+	
+	
+	// Hoisting JS automatically moves functions to the top unlike declared const functions
+	punch();
+	function punch(){
+		console.log('punch');
+	}
+  </script>
+</body>
+</html>
