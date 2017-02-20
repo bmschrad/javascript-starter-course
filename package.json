@@ -1,0 +1,14 @@
+{
+  "name": "javascript-starter-course",
+  "version": "1.0.0",
+  "description": "Scotch.io Getting Started with JavaScript project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  }
+}
