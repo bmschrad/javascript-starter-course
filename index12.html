@@ -50,8 +50,9 @@
       quantityLabel.innerText = quantity;
     }
 
-    // run calculation when page first loads
+    // run calculations when page first loads
     calculatePieCost();
+    updateQuantityLabel();
 
     // add our event listeners
     priceInput.addEventListener('input', calculatePieCost);
