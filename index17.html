@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JavaScript</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="data:,">
+  <style>
+body, .jumbotron { padding: 30px }
+  body { background: #EFEFEF; }
+  .content {
+    background: #FFF;
+    padding: 50px;
+    font-size: 19px;
+    line-height: 1.5;
+    min-height: 3000px;
+  }
+  .scroll-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 8px;
+    background: #1CE;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.168, 1) width;
+  }
+  </style>
+</head>
+<body>
+  <div class="scroll-line"></div>
+  <div class="container">
+    <div class="content">
+      <!--lorem-->
+      Sodales sit amet, elit.
+
+      Curabitur urna tellus, aliquam vitae, ultrices eget, vehicula nec, diam.
+      Integer elementum, felis non faucibus euismod, erat massa dictum eros, eu
+      ornare ligula tortor et mauris. Cras molestie magna in nibh. Aenean et tellus.
+      Fusce adipiscing commodo erat. In eu justo. Nulla dictum, erat sed blandit
+      venenatis, arcu dolor molestie dolor, vitae congue orci risus a nulla.
+      Pellentesque sit amet arcu. In mattis laoreet enim. Pellentesque id augue et
+      arcu blandit tincidunt. Pellentesque elit ante, rhoncus quis, dapibus sit amet,
+      tincidunt eu, nibh. In imperdiet. Nunc lectus neque, commodo eget, porttitor
+      quis, fringilla quis, purus.
+
+      Duis sagittis dignissim eros. 
+      <!--/lorem-->
+      
+    </div>
+  </div>
+  <script charset="utf-8">
+    const scrollLine = document.querySelector('.scroll-line');
+
+    function fillScrollLine() {
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.body.clientHeight;
+      const scrolled = window.scrollY;
+      const percentScrolled = (scrolled / (fullHeight - windowHeight)) * 100;
+      
+      scrollLine.style.width = `${percentScrolled}%`;
+    }
+    //window.addEventListener('scroll', fillScrollLine);
+    window.addEventListener('scroll', debounce(()=>{
+      fillScrollLine();
+    }, 200));
+    // Returns a function, that, as long as it continues to be invoked, will not
+    // be triggered. The function will be called after it stops being called for
+    // N milliseconds. If `immediate` is passed, trigger the function on the
+    // leading edge, instead of the trailing.
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+  </script>
+</body>
+</html>
